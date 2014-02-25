@@ -1,0 +1,9 @@
+language: java
+env:
+  global:
+    - BASE_VERSION_NUMBER="0.4"
+before_install:
+  - mvn versions:set versions:commit -DnewVersion=$BASE_VERSION_NUMBER.$TRAVIS_BUILD_NUMBER
+script:
+  - mvn compile findbugs:check
+  - mvn clean package
